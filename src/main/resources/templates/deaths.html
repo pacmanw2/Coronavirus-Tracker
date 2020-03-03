@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:include="fragments/header :: head"></th:block>
+</head>
+
+<body>
+
+<th:block th:include="fragments/navigation :: top-navbar"></th:block>
+
+<div class="container">
+    <h1>Coronavirus Deaths</h1>
+
+    <div class="jumbotron bg-dark text-white">
+        <h1 class="display-4" th:text="${totalReportedCases}"></h1>
+        <p class="lead">Total deaths worldwide as of today</p>
+
+        <hr class="my-4">
+        <p>
+        <h1 class="display-4" th:text="${totalNewCases}"></h1>
+        <span>New deaths reported since previous day</span>
+        </p>
+    </div>
+
+
+    <table class="table">
+        <tr>
+            <th>State</th>
+            <th>Country</th>
+            <th>Total deaths reported</th>
+            <th>Deaths since previous day</th>
+        </tr>
+        <tr th:each="locationStat : ${locationStats}">
+            <td th:text="${locationStat.state}"></td>
+            <td th:text="${locationStat.country}"></td>
+            <td th:text="${locationStat.latestTotalCases}">0</td>
+            <td th:text="${locationStat.deltaFromPrevDay}">0</td>
+        </tr>
+    </table>
+</div>
+
+</body>
+
+</html>
