@@ -33,6 +33,11 @@ public class HomeController{
         return "recovered";
     }
 
+    @GetMapping("/about")
+    public String about() {
+        return "about";
+    }
+
     private void getAllConfirmedStats(Model model){
         List<LocationStats> allStats = coronaVirusDataService.getAllConfirmedStats();
         int totalReportedCases = allStats.stream().mapToInt(stat -> stat.getLatestTotalCases()).sum();
